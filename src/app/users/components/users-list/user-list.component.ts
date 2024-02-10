@@ -10,6 +10,8 @@ import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { AppMaterialModule } from '../../../material/material.module';
 import { Router } from '@angular/router';
+import { AddUserDialog } from '../modal-dialogs/add-user-dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -28,8 +30,11 @@ export class UserListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  dialogRef!: MatDialogRef<any>;
+
   constructor(
     private router: Router,
+    private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private userService: UserService
   ) { }
@@ -88,5 +93,20 @@ export class UserListComponent implements OnInit {
    */
   deleteUser(userId: number) {
     console.log('Deleting user...', userId);
+  }
+
+  /**
+   * Function add user to the database
+   */
+  addUser() {
+    this.dialogRef = this.dialog.open(AddUserDialog, {minWidth: '230px'});
+    this.dialogRef.afterClosed().subscribe(results => {
+      if (results) {
+        console.log('results:', results)
+      } else {
+        console.log('NO results:')
+
+      }
+    })
   }
 }
