@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -11,9 +11,10 @@ import { MatSidenav } from '@angular/material/sidenav';
   standalone: true,
   providers: [],
   imports: [
-    HttpClientModule,
+    RouterModule,
     RouterOutlet,
-    AppMaterialModule
+    HttpClientModule,
+    AppMaterialModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
