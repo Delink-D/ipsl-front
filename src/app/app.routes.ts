@@ -5,6 +5,6 @@ export const routes: Routes = [
   {
     path: 'users',
     providers: [UserService],
-    loadComponent: () => import('./users/components/users-list/user-list.component').then(m => m.UserListComponent)
+    loadChildren: () => import('./users/users.routes').then(routes => routes.UsersRoutes)
   }
 ];
