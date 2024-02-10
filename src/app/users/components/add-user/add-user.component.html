@@ -1,41 +1,47 @@
 <div class="add-user-container">
 
-  <h3>Add user</h3>
+  <div class="add-user-heading">
+    <h3>Add user</h3>
+  </div>
 
   <form [formGroup]="addUserForm" class="add-user-form">
-    <mat-stepper [linear]="true" #stepper>
+    <mat-stepper [linear]="false" #stepper>
       <mat-step>
         <ng-template matStepLabel>User Personal details</ng-template>
 
         <!-- user Name -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter user name" formControlName="name">
+          <input matInput placeholder="Enter user name" formControlName="name" [(ngModel)]="user.name">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['name']"></validation-messages>
 
         <!-- Username -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter user name" formControlName="username">
+          <input matInput placeholder="Enter user name" formControlName="username" [(ngModel)]="user.username">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['username']"></validation-messages>
 
         <!-- Email -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter email" formControlName="email">
+          <input matInput placeholder="Enter email" formControlName="email" [(ngModel)]="user.email">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['email']"></validation-messages>
 
         <!-- Phone -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter phone number" formControlName="phone">
+          <input matInput placeholder="Enter phone number" formControlName="phone" [(ngModel)]="user.phone">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['phone']"></validation-messages>
 
         <!-- Website -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter website" formControlName="website">
+          <input matInput placeholder="Enter website" formControlName="website" [(ngModel)]="user.website">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['website']"></validation-messages>
+
+        <div>
+          <button mat-stroked-button color="primary" matStepperNext class="btn-float-right">Next</button>
+        </div>
       </mat-step>
 
       <mat-step>
@@ -43,49 +49,80 @@
 
         <!-- Address Street -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter street" formControlName="addressStreet">
+          <input matInput placeholder="Enter street" formControlName="addressStreet" [(ngModel)]="user.address.street">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressStreet']"></validation-messages>
 
         <!-- Address Suite -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter suite" formControlName="addressSuite">
+          <input matInput placeholder="Enter suite" formControlName="addressSuite" [(ngModel)]="user.address.suite">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressSuite']"></validation-messages>
 
         <!-- Address City -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter city" formControlName="addressCity">
+          <input matInput placeholder="Enter city" formControlName="addressCity" [(ngModel)]="user.address.city">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressCity']"></validation-messages>
 
         <!-- Address Zip Code -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter zip code" formControlName="addressZipCode">
+          <input matInput placeholder="Enter zip code" formControlName="addressZipCode"
+            [(ngModel)]="user.address.zipcode">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressZipCode']"></validation-messages>
 
         <!-- Address Geo Lat -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter latitude" formControlName="addressGeoLat">
+          <input matInput placeholder="Enter latitude" formControlName="addressGeoLat"
+            [(ngModel)]="user.address.geo.lat">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressGeoLat']"></validation-messages>
 
         <!-- Address Geo Lng -->
         <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter longitude" formControlName="addressGeoLng">
+          <input matInput placeholder="Enter longitude" formControlName="addressGeoLng"
+            [(ngModel)]="user.address.geo.lng">
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['addressGeoLng']"></validation-messages>
+
+        <div>
+          <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+          <button mat-stroked-button color="primary" matStepperNext class="btn-float-right">Next</button>
+        </div>
       </mat-step>
 
       <mat-step>
         <ng-template matStepLabel>User Company details</ng-template>
 
+        <!-- Company Name -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter Company Name" formControlName="companyName"
+            [(ngModel)]="user.company.name">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['companyName']"></validation-messages>
+
+        <!-- Company Catch Phrase -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter Company Catch Phrase" formControlName="companyCatchPhrase"
+            [(ngModel)]="user.company.catchPhrase">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['companyCatchPhrase']"></validation-messages>
+
+        <!-- Company BS -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter BS" formControlName="companyBs" [(ngModel)]="user.company.bs">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['companyBs']"></validation-messages>
+
+        <div>
+          <button mat-stroked-button color="primary" matStepperPrevious style="margin-right: 16px;">Back</button>
+          <button mat-stroked-button color="warn" (click)="stepper.reset()">Reset</button>
+          <button mat-raised-button color="primary" (click)="saveUser()" class="btn-float-right"
+            [disabled]="!addUserForm.valid">Submit</button>
+        </div>
       </mat-step>
     </mat-stepper>
-
-
-
 
   </form>
 </div>

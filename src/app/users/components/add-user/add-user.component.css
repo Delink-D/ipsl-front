@@ -1,3 +1,7 @@
-.add-user-container {
-  padding: 16px;
+.add-user-heading {
+  padding: 24px 24px 0 24px;
+}
+
+.btn-float-right {
+  float: right;
 }
