@@ -19,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   exports: [
@@ -41,7 +42,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatToolbarModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatStepperModule
   ]
 })
 
