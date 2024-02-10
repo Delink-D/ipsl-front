@@ -20,6 +20,8 @@ import { ValidationMessagesComponent } from '../../../validations/validation-mes
   styleUrl: './add-user.component.css'
 })
 export class AddUserComponent {
+  @Output() userSaved: EventEmitter<any> = new EventEmitter<any>();
+
   user: User = new User();
   addUserForm: FormGroup;
 
@@ -37,5 +39,12 @@ export class AddUserComponent {
       addressGeoLat: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
       addressGeoLng: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
     });
+  }
+
+  /**
+   * User form submitted, emit data to parent component
+   */
+  saveUser() {
+    this.userSaved.emit(this.user);
   }
 }

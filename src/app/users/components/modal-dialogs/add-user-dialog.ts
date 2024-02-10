@@ -7,7 +7,7 @@ import { AddUserComponent } from '../add-user/add-user.component';
   standalone: true,
   imports: [AddUserComponent],
   template: `
-    <app-add-user (saveUser)="saveUser($event)"></app-add-user>
+    <app-add-user (userSaved)="saveUser($event)"></app-add-user>
   `
 })
 export class AddUserDialog {
