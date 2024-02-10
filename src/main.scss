@@ -13,3 +13,5 @@ $app-theme:   mat.define-light-theme((
   density: 0
 ));
 @include mat.all-component-themes($app-theme);
+
+@import 'material-icons/iconfont/material-icons.css';
