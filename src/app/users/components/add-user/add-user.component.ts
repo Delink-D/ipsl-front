@@ -20,6 +20,7 @@ import { ValidationMessagesComponent } from '../../../validations/validation-mes
   styleUrl: './add-user.component.css'
 })
 export class AddUserComponent {
+  user: User = new User();
   addUserForm: FormGroup;
 
   constructor() {
