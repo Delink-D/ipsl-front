@@ -8,7 +8,7 @@ import { UserService } from '../../../services/user.service';
   selector: 'app-user-list',
   standalone: true,
   imports: [],
-  providers: [UserService],
+  providers: [],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
