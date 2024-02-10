@@ -21,4 +21,14 @@ export class UserService {
     const users = this.http.get<User[]>(`${this.API_ENDPOINT}/users`);
     return users;
   }
+
+  /**
+   * Fetch a single user by passing in the user id
+   * @param {Number} id user id
+   * @returns {User} a single user
+   */
+  getSingleUser(id: number): Observable<User> {
+    const user = this.http.get<User>(`${this.API_ENDPOINT}/users/${id}`);
+    return user;
+  }
 }
