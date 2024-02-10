@@ -2,6 +2,16 @@
   padding: 0;
 }
 
+.main-content {
+  padding: 16px;
+  background-color: aqua;
+  height: calc(100vh - 64px);
+
+  @media screen and (min-width: 600px) {
+    height: calc(100vh - 64px - 2rem);
+  }
+}
+
 mat-toolbar {
   position: fixed;
   top: 0;
