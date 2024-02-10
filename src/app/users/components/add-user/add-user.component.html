@@ -1,0 +1,91 @@
+<div class="add-user-container">
+
+  <h3>Add user</h3>
+
+  <form [formGroup]="addUserForm" class="add-user-form">
+    <mat-stepper [linear]="true" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>User Personal details</ng-template>
+
+        <!-- user Name -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter user name" formControlName="name">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['name']"></validation-messages>
+
+        <!-- Username -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter user name" formControlName="username">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['username']"></validation-messages>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter email" formControlName="email">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['email']"></validation-messages>
+
+        <!-- Phone -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter phone number" formControlName="phone">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['phone']"></validation-messages>
+
+        <!-- Website -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter website" formControlName="website">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['website']"></validation-messages>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>User Address details</ng-template>
+
+        <!-- Address Street -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter street" formControlName="addressStreet">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressStreet']"></validation-messages>
+
+        <!-- Address Suite -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter suite" formControlName="addressSuite">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressSuite']"></validation-messages>
+
+        <!-- Address City -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter city" formControlName="addressCity">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressCity']"></validation-messages>
+
+        <!-- Address Zip Code -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter zip code" formControlName="addressZipCode">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressZipCode']"></validation-messages>
+
+        <!-- Address Geo Lat -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter latitude" formControlName="addressGeoLat">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressGeoLat']"></validation-messages>
+
+        <!-- Address Geo Lng -->
+        <mat-form-field appearance="outline" class="width100">
+          <input matInput placeholder="Enter longitude" formControlName="addressGeoLng">
+        </mat-form-field>
+        <validation-messages [control]="addUserForm.controls['addressGeoLng']"></validation-messages>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>User Company details</ng-template>
+
+      </mat-step>
+    </mat-stepper>
+
+
+
+
+  </form>
+</div>
