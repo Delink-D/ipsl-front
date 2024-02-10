@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
   users!: User[];
 
-  displayedColumns: string[] = ['image', 'name', 'email', 'company_name'];
+  displayedColumns: string[] = ['image', 'name', 'email', 'company_name', 'action'];
   dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -72,5 +72,21 @@ export class UserListComponent implements OnInit {
    */
   viewUser(userId: number) {
     this.router.navigate(['/users/' + userId]);
+  }
+
+  /**
+   * Edit selected user for updating
+   * @param {User} user 
+   */
+  editPatient(user: User) {
+    console.log('Editing user...', user);
+  }
+
+  /**
+   * Delete selected user
+   * @param {number} userId
+   */
+  deleteUser(userId: number) {
+    console.log('Deleting user...', userId);
   }
 }
