@@ -32,6 +32,7 @@ export class AddUserComponent {
       email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(255)]),
       phone: new FormControl('', [Validators.required]),
       website: new FormControl('', [ValidationService.websiteValidator, Validators.minLength(5), Validators.maxLength(255)]),
+      image: new FormControl('', [ValidationService.websiteValidator, Validators.minLength(5), Validators.maxLength(1055)]),
 
       addressStreet: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       addressSuite: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),

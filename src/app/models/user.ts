@@ -4,6 +4,7 @@ export class User {
   name!: string;
   username!: string;
   email!: string;
+  image!: string;
   address: UserAddress = {} as UserAddress;
   phone!: string;
   website!: string;
