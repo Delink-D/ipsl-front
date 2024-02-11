@@ -48,4 +48,13 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.API_ENDPOINT}/users/${user.id}`, user);
   }
+
+  /**
+   * Delete user from the API
+   * @param id user id to delete
+   * @returns boolean
+   */
+  deleteUser(userId: number): Observable<void> {
+    return this.http.delete<void>(`${this.API_ENDPOINT}/users/${userId}`)
+  }
 }

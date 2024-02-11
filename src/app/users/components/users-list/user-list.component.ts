@@ -127,7 +127,21 @@ export class UserListComponent implements OnInit {
    * @param {number} userId
    */
   deleteUser(userId: number) {
-    console.log('Deleting user...', userId);
+    this.userService.deleteUser(userId).subscribe(
+      (response) => {
+        console.log('Deleted:', response);
+        this.users = this.users.filter(usr => usr.id !== userId);
+        this.refreshTableData();
+      },
+      (error: any) => {
+        console.log(error);
+        this.snackBar.open('Error deleting the user, try again', 'Error', { duration: 6000 })
+      },
+      () => {
+        console.log('Done deleting a user');
+        this.snackBar.open('Done deleting the user', 'Success', { duration: 6000 });
+      }
+    );
   }
 
   /**
