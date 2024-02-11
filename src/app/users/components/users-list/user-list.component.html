@@ -24,7 +24,15 @@
     <!-- Image Column -->
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
-      <td mat-cell *matCellDef="let row" (click)="viewUser(row.id)"> {{row?.image}} </td>
+      <td mat-cell *matCellDef="let row" (click)="viewUser(row.id)">
+        <div class="user-image">
+          @if(row.image) {
+          <img [src]="row.image" style="width: 100%;"/>
+          } @else {
+          <mat-icon>person</mat-icon>
+          }
+        </div>
+      </td>
     </ng-container>
 
     <!-- Name Column -->

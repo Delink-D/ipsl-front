@@ -34,3 +34,16 @@
 .add-user-btn {
   float: right;
 }
+
+.user-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 2px;
+  background-color: #d1d1d1;
+}
+
+.user-image > mat-icon {
+  width: 45px!important;
+  height: 45px!important;
+  font-size: 45px!important;
+}
