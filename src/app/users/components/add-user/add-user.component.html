@@ -28,10 +28,15 @@
         <validation-messages [control]="addUserForm.controls['email']"></validation-messages>
 
         <!-- Phone -->
-        <mat-form-field appearance="outline" class="width100">
-          <input matInput placeholder="Enter phone number" formControlName="phone" [(ngModel)]="user.phone">
+        <mat-form-field class="width100">
+          <ngx-mat-intl-tel-input #phone [(ngModel)]="user.phone"
+            [enablePlaceholder]="true" [enableSearch]="true" inputPlaceholder="Enter Mobile Number"
+            name="phone" describedBy="phoneInput" formControlName="phone" placeholder="Enter Mobile Number"
+            [required]="true" autocomplete="none"></ngx-mat-intl-tel-input>
         </mat-form-field>
         <validation-messages [control]="addUserForm.controls['phone']"></validation-messages>
+        <mat-error *ngIf="addUserForm.controls['phone']?.errors?.['validatePhoneNumber']"
+          style="margin-top: -16px;">Invalid Mobile Number</mat-error>
 
         <!-- Website -->
         <mat-form-field appearance="outline" class="width100">

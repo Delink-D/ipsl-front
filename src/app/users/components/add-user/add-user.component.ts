@@ -8,11 +8,13 @@ import { User } from '../../../models/user';
 
 import { ValidationService } from '../../../validations/validation.service';
 import { ValidationMessagesComponent } from '../../../validations/validation-message.component';
+import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ValidationMessagesComponent],
+  imports: [CommonModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ValidationMessagesComponent,
+    NgxMatIntlTelInputComponent],
   providers: [],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
