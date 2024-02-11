@@ -37,8 +37,8 @@ export class AddUserComponent {
       addressSuite: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       addressCity: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       addressZipCode: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
-      addressGeoLat: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
-      addressGeoLng: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
+      addressGeoLat: new FormControl('', [ValidationService.latValidator, Validators.minLength(3), Validators.maxLength(255)]),
+      addressGeoLng: new FormControl('', [ValidationService.lngValidator, Validators.minLength(3), Validators.maxLength(255)]),
 
       companyName: new FormControl('', [Validators.minLength(3), Validators.maxLength(50)]),
       companyCatchPhrase: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),

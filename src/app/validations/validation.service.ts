@@ -6,7 +6,9 @@ export class ValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     const config: any = {
       'required': 'This field is required',
-      'invalidWebsite': 'Invalid website'
+      'invalidWebsite': 'Invalid website',
+      'invalidLat': 'The latitude is invalid',
+      'invalidLng': 'The longitude is invalid'
     };
 
     return config[validatorName];
@@ -24,4 +26,27 @@ export class ValidationService {
     }
   }
 
+  static latValidator(control: any) {
+    if (control.value) {
+      if (control.value.match(/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})$/)) {
+        return null;
+      } else {
+        return { 'invalidLat': true }
+      }
+    } else {
+      return null;
+    }
+  }
+
+  static lngValidator(control: any) {
+    if (control.value) {
+      if (control.value.match(/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/)) {
+        return null;
+      } else {
+        return { 'invalidLng': true }
+      }
+    } else {
+      return null;
+    }
+  }
 }
