@@ -50,12 +50,19 @@ export class UserListComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       (response: User[]) => {
         this.users = response;
-        this.dataSource = new MatTableDataSource(this.users);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.refreshTableData();
       }),
       (error: any) => { console.log(error); this.snackBar.open('Error getting list of users', 'Error', { duration: 6000 }) },
       () => console.log('Completed fetching all the users')
+  }
+
+  /**
+   * Function refresh the table with data
+   */
+  refreshTableData() {
+    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   /**
@@ -99,13 +106,27 @@ export class UserListComponent implements OnInit {
    * Function add user to the database
    */
   addUser() {
-    this.dialogRef = this.dialog.open(AddUserDialog, {minWidth: '230px'});
+    this.dialogRef = this.dialog.open(AddUserDialog, { minWidth: '230px' });
     this.dialogRef.afterClosed().subscribe(results => {
       if (results) {
-        console.log('results:', results)
-      } else {
-        console.log('NO results:')
 
+        // post to the API
+        this.userService.saveUser(results).subscribe(
+          (response) => {
+            this.users.push(response);
+            this.refreshTableData();
+          },
+          (error: any) => {
+            console.log(error);
+            this.snackBar.open(`Error adding user ${results.name}`, 'Error', { duration: 6000 });
+          },
+          () => {
+            console.log('Successfully added a new user');
+            this.snackBar.open(`User ${results.name} successfully saved`, 'Success', { duration: 6000 });
+          }
+        );
+      } else {
+        console.log('Nothing to save, exited without data');
       }
     })
   }

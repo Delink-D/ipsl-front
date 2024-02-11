@@ -31,4 +31,12 @@ export class UserService {
     const user = this.http.get<User>(`${this.API_ENDPOINT}/users/${id}`);
     return user;
   }
+
+  /**
+   * Save a new user to the API
+   * @param {User} user user object to save
+   */
+  saveUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.API_ENDPOINT}/users`, user);
+  }
 }
