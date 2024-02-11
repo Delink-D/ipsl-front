@@ -1,15 +1,20 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../../../models/user';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { PipesModule } from '../../../pipes/pipes.module';
+import { AppMaterialModule } from '../../../material/material.module';
+
+import { User } from '../../../models/user';
+
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppMaterialModule, PipesModule],
   providers: [],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'

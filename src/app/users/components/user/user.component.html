@@ -1,1 +1,53 @@
-{{user | json}}
+@if(user) {
+<div class="user-details-page">
+  <div class="flex-container">
+
+    <div style="flex-grow: 2;">
+      <div class="user-image">
+        @if(user.image) {
+        <img [src]="user.image" style="width: 100%;" />
+        } @else {
+        <mat-icon>person</mat-icon>
+        }
+      </div>
+
+      <div>
+        <h3>Address</h3>
+        <p><strong>Street:</strong> {{user.address.street}}</p>
+        <p><strong>Suite:</strong> {{user.address.suite}}</p>
+        <p><strong>City:</strong> {{user.address.city}}</p>
+        <p><strong>Zip-Code:</strong> {{user.address.zipcode}}</p>
+
+        <div class="map">
+          <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            [src]="'https://maps.google.com/maps?q='+user.address.geo.lat+','+user.address.geo.lng+'&hl=es&z=14&amp;output=embed' | safe">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="flex-grow: 4;">
+      <h2>{{user.name}}</h2>
+      <p class="mat-caption">&#64;{{user.username}} &nbsp; &nbsp; <strong>Email: </strong>
+        <a [href]="'mailto:' + user.email">{{user.email}}</a>
+      </p>
+
+      <mat-tab-group>
+        <mat-tab label="About">
+          <p><strong>Phone:</strong> {{user.phone}}</p>
+          <p><strong>Website:</strong> <a [href]="user.website"> {{user.website}}</a></p>
+        </mat-tab>
+        <mat-tab label="Company">
+          <p><strong>Company Name:</strong> {{user.company.name}}</p>
+          <p><strong>Company Catch Phrase</strong> {{user.company.catchPhrase}}</p>
+          <p><strong>Business Slogan:</strong> {{user.company.bs}}</p>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+  </div>
+</div>
+} @else {
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
