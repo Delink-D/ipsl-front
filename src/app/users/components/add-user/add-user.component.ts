@@ -28,7 +28,7 @@ export class AddUserComponent {
   _user: User = new User();
   addUserForm: FormGroup;
 
-  constructor() {
+  constructor(private changeDetector: ChangeDetectorRef) {
     this.addUserForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
@@ -48,6 +48,10 @@ export class AddUserComponent {
       companyCatchPhrase: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)]),
       companyBs: new FormControl('', [Validators.minLength(3), Validators.maxLength(255)])
     });
+  }
+
+  ngAfterViewChecked() {
+    this.changeDetector.detectChanges();
   }
 
   /**
