@@ -39,4 +39,13 @@ export class UserService {
   saveUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.API_ENDPOINT}/users`, user);
   }
+
+  /**
+   * Update user function
+   * @param {User} user updated user
+   * @returns User
+   */
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.API_ENDPOINT}/users/${user.id}`, user);
+  }
 }

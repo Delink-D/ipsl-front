@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -20,9 +20,12 @@ import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
   styleUrl: './add-user.component.css'
 })
 export class AddUserComponent {
+  @Input() set user(user: User) {
+    this._user = user ? user : new User();
+  } get user(): User { return this._user }
   @Output() userSaved: EventEmitter<any> = new EventEmitter<any>();
 
-  user: User = new User();
+  _user: User = new User();
   addUserForm: FormGroup;
 
   constructor() {

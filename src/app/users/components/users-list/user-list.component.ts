@@ -91,7 +91,35 @@ export class UserListComponent implements OnInit {
    * @param {User} user 
    */
   editPatient(user: User) {
-    console.log('Editing user...', user);
+    this.dialogRef = this.dialog.open(AddUserDialog, {
+      minWidth: '230px',
+      data: {
+        user: user
+      }
+    });
+    this.dialogRef.afterClosed().subscribe(results => {
+      if (results) {
+
+        // post to the API
+        this.userService.updateUser(results).subscribe(
+          (response) => {
+            this.users = this.users.filter(usr => usr.id !== user.id); // remove outdated user from the array
+            this.users.push(response); // push the updated user details to the array
+            this.refreshTableData();
+          },
+          (error: any) => {
+            console.log(error);
+            this.snackBar.open(`Error updating the user ${results.name}`, 'Error', { duration: 6000 });
+          },
+          () => {
+            console.log('Successfully updating the user');
+            this.snackBar.open(`User ${results.name} successfully updated`, 'Success', { duration: 6000 });
+          }
+        );
+      } else {
+        console.log('Nothing to save, exited without data');
+      }
+    })
   }
 
   /**
