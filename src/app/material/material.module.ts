@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   exports: [
@@ -43,7 +44,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTabsModule
   ]
 })
 
