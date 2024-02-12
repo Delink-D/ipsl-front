@@ -49,7 +49,12 @@ export class UserComponent implements OnInit {
 
     this.userService.getSingleUser(this.userId).subscribe(
       (response) => this.user = response,
-      (error: any) => { console.log(error); this.snackBar.open(`Error getting the user: ${this.userId}`, 'Error', { duration: 6000 }) },
+      (error: any) => {
+        console.log(error);
+        this.snackBar.open(`Error getting the user: ${this.userId}`, 'Error', { duration: 6000 });
+        // redirect back to users list
+        this.router.navigate(['/users']); // redirect to users list
+      },
       () => console.log('Completed fetching the user')
     )
   }
